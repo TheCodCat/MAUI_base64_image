@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_base64_image.MainPage"
+             xmlns:vm="clr-namespace:MAUI_base64_image.viewModels"
+             xmlns:base64Controls="http://eliseev/base64Image">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <Button
+                Text="Нажми на меня чтобы задать картунку" 
+                HorizontalOptions="Fill"
+                Command="{Binding GetImagesCommand}"/>
+
+            <CollectionView ItemsSource="{Binding Images}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="5" WidthRequest="400" HeightRequest="400" Stroke="White" StrokeThickness="2">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="20"/>
+                            </Border.StrokeShape>
+                            <base64Controls:ImageBase64
+                                    Aspect="AspectFill"
+                                    Base64Source="{Binding Base64}"/>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
